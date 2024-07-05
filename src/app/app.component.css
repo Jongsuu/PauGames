@@ -1,0 +1,30 @@
+button[mat-icon-button] {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  left: 8px;
+}
+
+mat-drawer-container {
+  @apply bg-primary-border-subtle;
+}
+
+mat-drawer-container mat-drawer {
+  @apply bg-primary-subtle;
+  width: 250px;
+}
+
+mat-drawer-content {
+  height: 100vh;
+}
+
+@media (max-width: 360px) {
+  mat-drawer-container mat-drawer {
+    width: 225px;
+  }
+
+  button[mat-icon-button] {
+    top: 0px;
+    left: 0px;
+  }
+}

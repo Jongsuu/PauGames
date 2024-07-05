@@ -1,0 +1,115 @@
+@use '@angular/material' as mat;
+
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$primary: (
+  50 : #edf6f9,
+  100 : #d2e9f1,
+  200 : #b4dbe7,
+  300 : #96ccdd,
+  400 : #80c1d6,
+  500 : #69b6cf,
+  600 : #61afca,
+  700 : #56a6c3,
+  800 : #4c9ebd,
+  900 : #3b8eb2,
+  A100 : #ffffff,
+  A200 : #f0fcff,
+  A400 : #bdf4ff,
+  A700 : #a4efff,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$secondary: (
+  50 : #f2e8f5,
+  100 : #dec6e6,
+  200 : #c8a0d6,
+  300 : #b27ac5,
+  400 : #a25eb8,
+  500 : #9141ac,
+  600 : #893ba5,
+  700 : #7e329b,
+  800 : #742a92,
+  900 : #621c82,
+  A100 : #f6ecff,
+  A200 : #dcb9ff,
+  A400 : #c286ff,
+  A700 : #b56dff,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$error: (
+  50 : #fff6f5,
+  100 : #ffe9e6,
+  200 : #ffdad5,
+  300 : #ffcbc4,
+  400 : #ffbfb8,
+  500 : #ffb4ab,
+  600 : #ffada4,
+  700 : #ffa49a,
+  800 : #ff9c91,
+  900 : #ff8c80,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffffff,
+  A700 : #ffffff,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+$light-primary-palette: mat.define-palette($primary, 500);
+$light-accent-palette: mat.define-palette($secondary, A200, A100, A400);
+$light-warn-palette: mat.define-palette($error, A200, A100, A400);
+
+$light-theme: mat.define-light-theme((color: (primary: $light-primary-palette,
+        accent: $light-accent-palette,
+        warn: $light-warn-palette,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    ));
+
+@include mat.all-component-themes($light-theme);

@@ -1,0 +1,73 @@
+<section id="blackjack" class="w-full h-full s:px-5 s:py-8 pt-3">
+  <div class="relative w-full h-full flex justify-center">
+    <div class="absolute top-0 w-full">
+      <h2 class="text-primary text-[24px] s:text-[32px] font-bold mb-0 text-end">Crupier</h2>
+      <div class="relative flex flex-col items-center">
+          @if (crupier.cards.length > 0) {
+          <ul class="inline-flex flex-wrap justify-center items-center s:gap-2 gap-1">
+            @for (card of crupier.cards; track card.card + card.cardSuit) {
+            <li @dealCardTrigger class="relative h-full card" [class.face-up]="card.isFaceUp">
+              <div class="card-face-down drop-shadow-md"></div>
+              <img [src]="getCardImage(card)" class="card-face-up drop-shadow-md select-none"/>
+            </li>
+            }
+          </ul>
+          @if (crupier.total !== 0) {
+          <div class="w-full flex justify-center">
+            <p @fadeInTrigger
+            class="bg-primary opacity-95 font-bold shadow-md text-primary-subtle
+            py-1 px-5 rounded-xl absolute -bottom-3 z-[1] m-0 select-none">{{ crupier.total }}</p>
+          </div>
+          }
+        }
+      </div>
+    </div>
+    <div class="absolute flex items-center h-full -right-2 s:-right-10">
+      <div class="rounded-s bg-tertiary inline-flex flex-col gap-1 z-[1] cursor-default">
+        <div class="p-[10px] text-tertiary-subtle font-bold text-[20px]">
+          {{ crupier.wins | number: '2.0-0' }}
+        </div>
+        <div class="divide-white border"></div>
+        <div class="p-[10px] text-tertiary-subtle font-bold text-[20px]">
+          {{ player.wins | number: '2.0-0' }}
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-0 w-full">
+      <div class="relative flex flex-col items-center">
+          @if (player.cards.length > 0) {
+          <ul class="inline-flex flex-wrap justify-center items-center s:gap-2 gap-1">
+            @for (card of player.cards; track card.card + card.cardSuit) {
+            <li @dealCardTrigger class="relative h-full card" [class.face-up]="card.isFaceUp">
+              <div class="card-face-down drop-shadow-md"></div>
+              <img [src]="getCardImage(card)" class="card-face-up drop-shadow-md select-none"/>
+            </li>
+            }
+          </ul>
+          @if (player.total !== 0) {
+          <div class="w-full flex justify-center">
+            <p @fadeInTrigger
+            class="bg-primary opacity-95 font-bold shadow-md text-primary-subtle
+            py-1 px-5 rounded-xl absolute -bottom-3 z-[1] m-0 select-none">{{ player.total }}</p>
+          </div>
+          }
+        }
+      </div>
+      <h2 class="text-primary text-[24px] font-bold mb-0 mt-2">Jugador</h2>
+    </div>
+    <div class="absolute bottom-0 right-0 flex s:flex-row flex-col-reverse items-center toolbar s:gap-5 gap-2">
+      <button mat-fab matTooltip="Siguiente ronda" matTooltipPosition="above"
+        (click)="newRound()" [disabled]="state.valueOf() !== 2">
+        <mat-icon class="text-secondary-subtle">autorenew</mat-icon>
+      </button>
+      <button mat-fab matTooltip="Plantarse" matTooltipPosition="above"
+        (click)="stand()" [disabled]="state.valueOf() !== 1 || state.valueOf() === 1 && player.total >= 21">
+        <mat-icon class="text-secondary-subtle">pan_tool</mat-icon>
+      </button>
+      <button mat-fab matTooltip="Pedir carta" matTooltipPosition="above" class="disabled:bg-secondary-emphasis"
+        (click)="askForCard()" [disabled]="state.valueOf() !== 1 || state.valueOf() === 1 && player.total >= 21">
+        <mat-icon class="text-secondary-subtle">add</mat-icon>
+      </button>
+    </div>
+  </div>
+</section>

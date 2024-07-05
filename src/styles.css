@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+app-root {
+  max-height: 100vh;
+  display: block;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.cdk-global-overlay-wrapper:has(.centered-snackbar) {
+  align-items: center !important;
+  cursor: default;
+}
+
+@media (max-width: 420px) {
+  .centered-snackbar {
+    margin-right: 50px !important;
+  }
+}

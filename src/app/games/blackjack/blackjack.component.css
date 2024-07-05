@@ -1,0 +1,44 @@
+.card {
+  height: 250px;
+}
+
+.card.face-up .card-face-down {
+  transform: rotateY(-180deg);
+}
+
+.card.face-up .card-face-up {
+  transform: rotateY(0deg);
+}
+
+.card-face-up {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotateY(180deg);
+  transition: transform 500ms 100ms;
+  backface-visibility: hidden;
+}
+
+.card-face-down {
+  position: absolute;
+  background-image: url("/assets/poker-cards/abstract_card.svg");
+  transform: rotateY(180deg);
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+  transition: transform 500ms 100ms;
+}
+
+.toolbar button[mat-fab] {
+  @apply bg-secondary;
+}
+
+@media (max-width: 420px) {
+  .card {
+    height: 150px;
+  }
+}
