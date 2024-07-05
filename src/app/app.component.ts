@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
@@ -51,8 +51,8 @@ export class AppComponent {
   drawer!: MatDrawer;
   menuOpened = false;
 
-  constructor() {
-
+  constructor(router: Router) {
+    router.navigateByUrl("/blackjack");
   }
 
   toggleMenu(sideNav: MatDrawer): void {
