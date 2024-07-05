@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { dealCardTrigger, fadeInTrigger } from '../../../animations/animations';
 import { getRandomInt, initDeck } from '../../../utils/poker';
 import { DecimalPipe } from '@angular/common';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-blackjack',
@@ -44,10 +45,16 @@ export class BlackjackComponent implements OnInit {
 
   state: BlackjackGameState = BlackjackGameState.NewRound;
 
-  constructor(private snackBar: MatSnackBar) { }
+  isMobile = false;
+
+  constructor(private snackBar: MatSnackBar, private responsive: BreakpointObserver) { }
 
   ngOnInit(): void {
     this.newRound();
+    this.responsive.observe("(max-width: 768px)").subscribe(result => {
+      this.isMobile = result.matches;
+    });
+    this.isMobile = this.responsive.isMatched("(max-width: 768px)");
   }
 
   public newRound(): void {

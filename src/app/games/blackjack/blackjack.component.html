@@ -1,4 +1,4 @@
-<section id="blackjack" class="w-full h-full s:px-5 s:py-5">
+<section id="blackjack" class="w-full h-full md:px-5 md:py-5">
   <div class="relative w-full h-full flex justify-center">
     <div class="absolute top-0 w-full">
       <h2 class="text-primary text-[24px] s:text-[32px] font-bold mb-0 text-end">Crupier</h2>
@@ -22,13 +22,13 @@
         }
       </div>
     </div>
-    <div class="absolute flex items-center h-full -right-2 s:-right-10">
-      <div class="rounded-s bg-tertiary inline-flex flex-col gap-1 z-[1] cursor-default">
-        <div class="p-[10px] text-tertiary-subtle font-bold text-[20px]">
+    <div class="absolute flex items-center h-full -right-2 md:-right-10">
+      <div class="rounded-s bg-tertiary inline-flex flex-col gap-1 z-[1] cursor-default shadow-md border-white border-2">
+        <div class="p-[6px] s:p-[10px] text-white font-bold text-[18px] s:text-[20px]">
           {{ crupier.wins | number: '2.0-0' }}
         </div>
         <div class="divide-white border"></div>
-        <div class="p-[10px] text-tertiary-subtle font-bold text-[20px]">
+        <div class="p-[6px] s:p-[10px] text-white font-bold text-[18px] s:text-[20px]">
           {{ player.wins | number: '2.0-0' }}
         </div>
       </div>
@@ -55,16 +55,16 @@
       </div>
       <h2 class="text-primary text-[24px] font-bold mb-0 mt-2">Jugador</h2>
     </div>
-    <div class="absolute bottom-0 right-0 flex s:flex-row flex-col-reverse items-center toolbar s:gap-5 gap-2">
-      <button mat-fab matTooltip="Siguiente ronda" matTooltipPosition="above"
-        (click)="newRound()" [disabled]="state.valueOf() !== 2">
+    <div class="absolute bottom-0 right-0 flex md:flex-row flex-col-reverse items-center toolbar s:gap-5 gap-2">
+      <button mat-fab matTooltip="Siguiente ronda" [matTooltipPosition]="isMobile ? 'before' : 'above'"
+        (click)="newRound()" [disabled]="state.valueOf() !== 2" class="secondary">
         <mat-icon class="text-secondary-subtle">autorenew</mat-icon>
       </button>
-      <button mat-fab matTooltip="Plantarse" matTooltipPosition="above"
+      <button mat-fab matTooltip="Plantarse" [matTooltipPosition]="isMobile ? 'before' : 'above'" class="secondary"
         (click)="stand()" [disabled]="state.valueOf() !== 1 || state.valueOf() === 1 && player.total >= 21">
         <mat-icon class="text-secondary-subtle">pan_tool</mat-icon>
       </button>
-      <button mat-fab matTooltip="Pedir carta" matTooltipPosition="above" class="disabled:bg-secondary-emphasis"
+      <button mat-fab matTooltip="Pedir carta" [matTooltipPosition]="isMobile ? 'before' : 'above'" class="secondary"
         (click)="askForCard()" [disabled]="state.valueOf() !== 1 || state.valueOf() === 1 && player.total >= 21">
         <mat-icon class="text-secondary-subtle">add</mat-icon>
       </button>
