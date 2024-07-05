@@ -1,7 +1,9 @@
 <section id="blackjack" class="w-full h-full md:px-5 md:py-5">
   <div class="relative w-full h-full flex justify-center">
-    <div class="absolute top-0 w-full">
+    <div class="absolute top-0 right-0 xl:right-[150px] z-[1]">
       <h2 class="text-primary text-[24px] s:text-[32px] font-bold mb-0 text-end">Crupier</h2>
+    </div>
+    <div class="absolute top-0 w-full">
       <div class="relative flex flex-col items-center">
           @if (crupier.cards.length > 0) {
           <ul class="inline-flex flex-wrap justify-center items-center s:gap-2 gap-1">
@@ -53,9 +55,11 @@
           }
         }
       </div>
-      <h2 class="text-primary text-[24px] font-bold mb-0 mt-2">Jugador</h2>
     </div>
-    <div class="absolute bottom-0 right-0 flex md:flex-row flex-col-reverse items-center toolbar s:gap-5 gap-2">
+    <div class="absolute bottom-0 left-0 xl:left-[150px] z-[1]">
+      <h2 class="text-primary text-[24px] s:text-[32px] font-bold mb-0 mt-2">Jugador</h2>
+    </div>
+    <div class="absolute bottom-0 right-0 flex md:flex-row flex-col-reverse items-center toolbar s:gap-5 gap-3">
       <button mat-fab matTooltip="Siguiente ronda" [matTooltipPosition]="isMobile ? 'before' : 'above'"
         (click)="newRound()" [disabled]="state.valueOf() !== 2" class="secondary">
         <mat-icon class="text-secondary-subtle">autorenew</mat-icon>
