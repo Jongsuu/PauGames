@@ -55,7 +55,7 @@ export class AppComponent {
     router.navigateByUrl("/blackjack");
   }
 
-  toggleMenu(sideNav: MatDrawer): void {
+  public toggleMenu(sideNav: MatDrawer): void {
     sideNav.toggle();
     if (!this.drawer) {
       this.drawer = sideNav;

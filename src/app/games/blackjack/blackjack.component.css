@@ -1,5 +1,18 @@
+section#blackjack {
+  width: 100%;
+  height: 100%;
+  max-height: 100dvh;
+  max-width: 100%;
+}
+
 .card {
   height: 250px;
+  width: 175px;
+}
+
+svg {
+  width: inherit;
+  height: inherit;
 }
 
 .card.face-up .card-face-down {
@@ -21,13 +34,9 @@
 
 .card-face-down {
   position: absolute;
-  background-image: url("/assets/poker-cards/abstract_card.svg");
-  transform: rotateY(180deg);
-  height: 100%;
   width: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  height: 100%;
+  object-fit: contain;
   backface-visibility: hidden;
   transform: rotateY(0deg);
   transition: transform 500ms 100ms;
@@ -50,6 +59,11 @@
 }
 
 @media (max-width: 768px) {
+  section#blackjack {
+    width: 100%;
+    height: 100%;
+  }
+
   .toolbar button[mat-fab] {
     height: 48px;
     width: 48px;
@@ -64,12 +78,14 @@
 
 @media (max-width: 420px) {
   .card {
+    width: 105px;
     height: 150px;
   }
 }
 
 @media (max-width: 360px) {
   .card {
+    width: 87px;
     height: 125px;
   }
 }

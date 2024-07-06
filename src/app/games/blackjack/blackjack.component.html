@@ -1,6 +1,6 @@
-<section id="blackjack" class="w-full h-full md:px-5 md:py-5">
+<section id="blackjack" class="p-4 md:p-5 md:py-8">
   <div class="relative w-full h-full flex justify-center">
-    <div class="absolute top-0 right-0 xl:right-[150px] z-[1]">
+    <div class="absolute top-0 right-0 s:top-5 md:top-0 s:right-5 xl:right-[150px] z-[1]">
       <h2 class="text-primary text-[24px] s:text-[32px] font-bold mb-0 text-end">Crupier</h2>
     </div>
     <div class="absolute top-0 w-full">
@@ -9,8 +9,12 @@
           <ul class="inline-flex flex-wrap justify-center items-center s:gap-2 gap-1">
             @for (card of crupier.cards; track card.card + card.cardSuit) {
             <li @dealCardTrigger class="relative h-full card" [class.face-up]="card.isFaceUp">
-              <div class="card-face-down drop-shadow-md"></div>
-              <img [src]="getCardImage(card)" class="card-face-up drop-shadow-md select-none"/>
+              <svg class="card-face-down drop-shadow-md select-none">
+                <use [attr.xlink:href]="'assets/face-down-cards-sheet.svg#' + getFaceDownCard()"></use>
+              </svg>
+              <svg class="card-face-up drop-shadow-md select-none">
+                <use [attr.xlink:href]="'assets/poker-cards-sheet.svg#' + getCardKey(card)"></use>
+              </svg>
             </li>
             }
           </ul>
@@ -24,7 +28,7 @@
         }
       </div>
     </div>
-    <div class="absolute flex items-center h-full -right-2 md:-right-10">
+    <div class="absolute flex items-center h-full -right-4 md:-right-5">
       <div class="rounded-s bg-tertiary inline-flex flex-col gap-1 z-[1] cursor-default shadow-md border-white border-2">
         <div class="p-[6px] s:p-[10px] text-white font-bold text-[18px] s:text-[20px]">
           {{ crupier.wins | number: '2.0-0' }}
@@ -41,8 +45,12 @@
           <ul class="inline-flex flex-wrap justify-center items-center s:gap-2 gap-1">
             @for (card of player.cards; track card.card + card.cardSuit) {
             <li @dealCardTrigger class="relative h-full card" [class.face-up]="card.isFaceUp">
-              <div class="card-face-down drop-shadow-md"></div>
-              <img [src]="getCardImage(card)" class="card-face-up drop-shadow-md select-none"/>
+              <svg class="card-face-down drop-shadow-md">
+                <use [attr.xlink:href]="'assets/face-down-cards-sheet.svg#' + getFaceDownCard()"></use>
+              </svg>
+              <svg class="card-face-up drop-shadow-md select-none">
+                <use [attr.xlink:href]="'assets/poker-cards-sheet.svg#' + getCardKey(card)"></use>
+              </svg>
             </li>
             }
           </ul>
@@ -56,7 +64,7 @@
         }
       </div>
     </div>
-    <div class="absolute bottom-0 left-0 xl:left-[150px] z-[1]">
+    <div class="absolute bottom-0 left-0 s:bottom-5 s:left-5 md:bottom-0 md:left-0 xl:left-[150px] z-[1]">
       <h2 class="text-primary text-[24px] s:text-[32px] font-bold mb-0 mt-2">Jugador</h2>
     </div>
     <div class="absolute bottom-0 right-0 flex md:flex-row flex-col-reverse items-center toolbar s:gap-5 gap-3">

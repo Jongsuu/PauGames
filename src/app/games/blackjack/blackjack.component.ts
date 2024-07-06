@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { dealCardTrigger, fadeInTrigger } from '../../../animations/animations';
 import { getRandomInt, initDeck } from '../../../utils/poker';
 import { DecimalPipe } from '@angular/common';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-blackjack',
@@ -135,6 +135,32 @@ export class BlackjackComponent implements OnInit {
     }
 
     return `assets/poker-cards/${cardValue}_of_${PokerCardSuit[card.cardSuit]}.svg`;
+  }
+
+  public getFaceDownCard(): string {
+    return `astronaut`;
+  }
+
+  public getCardKey(card: PokerCard): string {
+    let cardValue: string;
+
+    if (card.card === "A") {
+      cardValue = "ace";
+    }
+    else if (card.card === "J") {
+      cardValue = "jack";
+    }
+    else if (card.card === "Q") {
+      cardValue = "queen";
+    }
+    else if (card.card === "K") {
+      cardValue = "king";
+    }
+    else {
+      cardValue = card.card;
+    }
+
+    return `${cardValue}-of-${PokerCardSuit[card.cardSuit]}`;
   }
 
   public getCardValue(card: PokerCard): string {

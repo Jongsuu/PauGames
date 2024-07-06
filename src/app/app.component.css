@@ -6,6 +6,7 @@ button[mat-icon-button] {
 }
 
 mat-drawer-container {
+  position: absolute;
   @apply bg-primary-border-subtle;
 }
 
@@ -15,16 +16,16 @@ mat-drawer-container mat-drawer {
 }
 
 mat-drawer-content {
-  max-height: 100vh;
-  min-height: 100vh;
-  height: calc(100vh - 20px);
+  height: 100%;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
-  mat-drawer-content {
-    max-height: 100dvh;
-    min-height: 100dvh;
-  }
+  mat-drawer-content {}
+}
+
+@media (max-width: 420px) {
+  mat-drawer-content {}
 }
 
 @media (max-width: 360px) {
